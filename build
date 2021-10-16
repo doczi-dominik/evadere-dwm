@@ -1,0 +1,3 @@
+#!/bin/sh
+# Convenience script for building and installing
+make && sudo make clean install
