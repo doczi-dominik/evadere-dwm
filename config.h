@@ -85,43 +85,55 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "rofi", "-modi", "drun", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *togglemutecmd[] = { "pamixer", "--toggle-mute", NULL };
+static const char *raisevolcmd[] = { "pamixer", "--increase", "2", NULL };
+static const char *lowervolcmd[] = { "pamixer", "--decrease", "2", NULL };
+static const char *brightencmd[] = { "light", "-A", "2", NULL };
+static const char *darkencmd[] = { "light", "-U", "2", NULL };
+
+#include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,          spawn,            {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,     spawn,            {.v = termcmd } },
-	{ MODKEY,                       XK_j,          focusstack,       {.i = +1 } },
-	{ MODKEY,                       XK_k,          focusstack,       {.i = -1 } },
-	{ MODKEY,                       XK_i,          shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
-	{ MODKEY,                       XK_u,          shiftmastersplit, {.i = -1} },   /* reduce the number of tiled clients in the master area */
-	{ MODKEY,                       XK_h,          setmfact,         {.f = -0.05} },
-	{ MODKEY,                       XK_l,          setmfact,         {.f = +0.05} },
-	{ MODKEY,                       XK_Tab,        zoom,             {0} },
-	{ MODKEY,                       XK_q,          killclient,       {0} },
-	{ MODKEY,		                XK_comma,      cyclelayout,      {.i = -1 } },
-	{ MODKEY,                       XK_period,     cyclelayout,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_space,      togglefloating,   {0} },
-	{ MODKEY|ShiftMask,             XK_f,          togglefullscr,    {0} },
-	{ MODKEY,                       XK_0,          view,             {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,          tag,              {.ui = ~0 } },
-	{ MODKEY,                       XK_udiaeresis, focusmon,         {.i = -1 } },
-	{ MODKEY,                       XK_oacute,     focusmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_udiaeresis, tagmon,           {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_oacute,     tagmon,           {.i = +1 } },
-	TAGKEYS(                        XK_1,                            0)
-	TAGKEYS(                        XK_2,                            1)
-	TAGKEYS(                        XK_3,                            2)
-	TAGKEYS(                        XK_4,                            3)
-	TAGKEYS(                        XK_5,                            4)
-	TAGKEYS(                        XK_6,                            5)
-	TAGKEYS(                        XK_7,                            6)
-	TAGKEYS(                        XK_8,                            7)
-	TAGKEYS(                        XK_9,                            8)
-	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,             {1} },
-	{ MODKEY,                       XK_t,          rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
-	{ MODKEY|ShiftMask,             XK_t,          rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
-	{ MODKEY|ControlMask,           XK_t,          rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
-	{ MODKEY|ShiftMask|ControlMask, XK_t,          mirrorlayout,     {0} },
+	{ MODKEY,                       XK_d,                     spawn,            {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return,                spawn,            {.v = termcmd } },
+	{ NULL,                         XF86XK_AudioMute,         spawn,            {.v = togglemutecmd } },
+	{ NULL,                         XF86XK_AudioRaiseVolume,  spawn,            {.v = raisevolcmd } },
+	{ NULL,                         XF86XK_AudioLowerVolume,  spawn,            {.v = lowervolcmd } },
+	{ NULL,                         XF86XK_MonBrightnessUp,   spawn,            {.v = brightencmd } },
+	{ NULL,                         XF86XK_MonBrightnessDown, spawn,            {.v = darkencmd } },
+	{ MODKEY,                       XK_j,                     focusstack,       {.i = +1 } },
+	{ MODKEY,                       XK_k,                     focusstack,       {.i = -1 } },
+	{ MODKEY,                       XK_i,                     shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
+	{ MODKEY,                       XK_u,                     shiftmastersplit, {.i = -1} },   /* reduce the number of tiled clients in the master area */
+	{ MODKEY,                       XK_h,                     setmfact,         {.f = -0.05} },
+	{ MODKEY,                       XK_l,                     setmfact,         {.f = +0.05} },
+	{ MODKEY,                       XK_Tab,                   zoom,             {0} },
+	{ MODKEY,                       XK_q,                     killclient,       {0} },
+	{ MODKEY,		                XK_comma,                 cyclelayout,      {.i = -1 } },
+	{ MODKEY,                       XK_period,                cyclelayout,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_space,                 togglefloating,   {0} },
+	{ MODKEY|ShiftMask,             XK_f,                     togglefullscr,    {0} },
+	{ MODKEY,                       XK_0,                     view,             {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,                     tag,              {.ui = ~0 } },
+	{ MODKEY,                       XK_udiaeresis,            focusmon,         {.i = -1 } },
+	{ MODKEY,                       XK_oacute,                focusmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_udiaeresis,            tagmon,           {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_oacute,                tagmon,           {.i = +1 } },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,                     quit,             {1} },
+	{ MODKEY,                       XK_t,                     rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
+	{ MODKEY|ShiftMask,             XK_t,                     rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
+	{ MODKEY|ControlMask,           XK_t,                     rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
+	{ MODKEY|ShiftMask|ControlMask, XK_t,                     mirrorlayout,     {0} },
+	TAGKEYS(                        XK_1,                                       0)
+	TAGKEYS(                        XK_2,                                       1)
+	TAGKEYS(                        XK_3,                                       2)
+	TAGKEYS(                        XK_4,                                       3)
+	TAGKEYS(                        XK_5,                                       4)
+	TAGKEYS(                        XK_6,                                       5)
+	TAGKEYS(                        XK_7,                                       6)
+	TAGKEYS(                        XK_8,                                       7)
+	TAGKEYS(                        XK_9,                                       8)
 };
 
 /* button definitions */
