@@ -34,7 +34,9 @@ static const unsigned int alphas[][3] = {
 };
 
 static const char *const autostart[] = {
+	"wal", "-R", NULL,
 	"picom", "-CGb", NULL,
+	"unclutter", NULL,
 	NULL /* terminate */
 };
 
