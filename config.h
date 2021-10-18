@@ -87,6 +87,8 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "rofi", "-modi", "drun", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *redshiftoncmd[] = { "redshift", "-O", "3000", NULL };
+static const char *redshiftoffcmd[] = { "redshift", "-x", NULL };
 static const char *togglemutecmd[] = { "pamixer", "--toggle-mute", NULL };
 static const char *raisevolcmd[] = { "pamixer", "--increase", "2", NULL };
 static const char *lowervolcmd[] = { "pamixer", "--decrease", "2", NULL };
@@ -99,6 +101,10 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,                     spawn,            {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,                spawn,            {.v = termcmd } },
+	{ MODKEY,                       XK_w,                     spawn,            SHCMD("$BROWSER") },
+	{ MODKEY,                       XK_c,                     spawn,            SHCMD("$SCRIPTS/workspacemenu") },
+	{ MODKEY,                       XK_n,                     spawn,            {.v = redshiftoncmd } },
+	{ MODKEY|ShiftMask,             XK_n,                     spawn,            {.v = redshiftoffcmd } },
 	{ NULL,                         XF86XK_AudioMute,         spawn,            {.v = togglemutecmd } },
 	{ NULL,                         XF86XK_AudioRaiseVolume,  spawn,            {.v = raisevolcmd } },
 	{ NULL,                         XF86XK_AudioLowerVolume,  spawn,            {.v = lowervolcmd } },
