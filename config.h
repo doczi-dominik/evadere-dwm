@@ -37,6 +37,7 @@ static const char *const autostart[] = {
 	"wal", "-R", NULL,
 	"picom", "-CGb", NULL,
 	"unclutter", NULL,
+	"gocaudices", NULL,
 	NULL /* terminate */
 };
 
