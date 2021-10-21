@@ -38,6 +38,7 @@ static const char *const autostart[] = {
 	"picom", "-CGb", NULL,
 	"unclutter", NULL,
 	"gocaudices", NULL,
+	"sh", "-c", "$SCRIPTS/updatewindow", NULL,
 	NULL /* terminate */
 };
 
