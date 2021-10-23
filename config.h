@@ -85,6 +85,7 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define BARSIGCMD(sig, cmd) SHCMD(cmd " && /bin/kill -s " sig " $(pidof $BAR)")
 
 /* commands */
 static const char *dmenucmd[] = { "rofi", "-modi", "drun", "-show", "drun", NULL };
@@ -107,11 +108,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_c,                     spawn,            SHCMD("$SCRIPTS/workspacemenu") },
 	{ MODKEY,                       XK_n,                     spawn,            {.v = redshiftoncmd } },
 	{ MODKEY|ShiftMask,             XK_n,                     spawn,            {.v = redshiftoffcmd } },
-	{ 0,                            XF86XK_AudioMute,         spawn,            {.v = togglemutecmd } },
-	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,            {.v = raisevolcmd } },
-	{ 0,                            XF86XK_AudioLowerVolume,  spawn,            {.v = lowervolcmd } },
-	{ 0,                            XF86XK_MonBrightnessUp,   spawn,            {.v = brightencmd } },
-	{ 0,                            XF86XK_MonBrightnessDown, spawn,            {.v = darkencmd } },
+	{ 0,                            XF86XK_AudioMute,         spawn,            BARSIGCMD("RTMIN+1", "pamixer --toggle-mute") },
+	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,            BARSIGCMD("RTMIN+1", "pamixer --increase 2") },
+	{ 0,                            XF86XK_AudioLowerVolume,  spawn,            BARSIGCMD("RTMIN+1", "pamixer --decrease 2") },
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn,            BARSIGCMD("RTMIN+2", "light -A 2") },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn,            BARSIGCMD("RTMIN+2", "light -U 2") },
 	{ MODKEY,                       XK_j,                     focusstack,       {.i = +1 } },
 	{ MODKEY,                       XK_k,                     focusstack,       {.i = -1 } },
 	{ MODKEY,                       XK_i,                     shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
