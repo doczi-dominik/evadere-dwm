@@ -92,11 +92,6 @@ static const char *dmenucmd[] = { "rofi", "-modi", "drun", "-show", "drun", NULL
 static const char *termcmd[]  = { "st", NULL };
 static const char *redshiftoncmd[] = { "redshift", "-O", "3000", NULL };
 static const char *redshiftoffcmd[] = { "redshift", "-x", NULL };
-static const char *togglemutecmd[] = { "pamixer", "--toggle-mute", NULL };
-static const char *raisevolcmd[] = { "pamixer", "--increase", "2", NULL };
-static const char *lowervolcmd[] = { "pamixer", "--decrease", "2", NULL };
-static const char *brightencmd[] = { "light", "-A", "2", NULL };
-static const char *darkencmd[] = { "light", "-U", "2", NULL };
 
 #include <X11/XF86keysym.h>
 
