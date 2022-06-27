@@ -11,7 +11,7 @@ static const char background[]      = "#000000";
 static const char foreground[]      = "#FFFFFF";
 static const char sub[]             = "#646464";
 static const char accent[]          = "#FFC637";
-static const unsigned int baralpha = 0;
+static const unsigned int baralpha = OPAQUE * 0.9;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
