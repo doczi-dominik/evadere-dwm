@@ -27,10 +27,10 @@ static const unsigned int alphas[][3] = {
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel] = { OPAQUE, baralpha, borderalpha },
 	[SchemeStatus] = { OPAQUE, baralpha, borderalpha },
-	[SchemeTagsSel] = { OPAQUE, baralpha, borderalpha },
-	[SchemeTagsNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeInfoSel] = { OPAQUE, baralpha, borderalpha },
-	[SchemeInfoNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeTagsSel] = { OPAQUE, 0, borderalpha },
+	[SchemeTagsNorm] = { OPAQUE, 0, borderalpha },
+	[SchemeInfoSel] = { OPAQUE, 0, borderalpha },
+	[SchemeInfoNorm] = { OPAQUE, 0, borderalpha },
 };
 
 static const char *const autostart[] = {
