@@ -53,7 +53,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{  NULL,      NULL,       NULL,       0,            0,           -1 },
+	{  "pico8",   "pico8",    NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
