@@ -91,6 +91,7 @@ static const char *dmenucmd[] = { "rofi", "-modi", "drun", "-show", "drun", NULL
 static const char *termcmd[]  = { "st", NULL };
 static const char *redshiftoncmd[] = { "redshift", "-O", "3000", NULL };
 static const char *redshiftoffcmd[] = { "redshift", "-x", NULL };
+static const char *passmenucmd[] = { "passmenu", NULL };
 
 #include <X11/XF86keysym.h>
 
@@ -99,7 +100,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,                     spawn,            {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,                spawn,            {.v = termcmd } },
 	{ MODKEY,                       XK_w,                     spawn,            SHCMD("$BROWSER") },
-	{ MODKEY,                       XK_c,                     spawn,            SHCMD("$SCRIPTS/workspacemenu") },
+	{ MODKEY,                       XK_c,                     spawn,            SHCMD("workspacemenu") },
+	{ MODKEY,                       XK_p,                     spawn,            {.v = passmenucmd } },
 	{ MODKEY,                       XK_n,                     spawn,            {.v = redshiftoncmd } },
 	{ MODKEY|ShiftMask,             XK_n,                     spawn,            {.v = redshiftoffcmd } },
 	{ 0,                            XF86XK_AudioMute,         spawn,            BARSIGCMD("RTMIN+1", "pamixer --toggle-mute") },
