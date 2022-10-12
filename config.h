@@ -101,6 +101,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return,                spawn,            {.v = termcmd } },
 	{ MODKEY,                       XK_w,                     spawn,            SHCMD("$BROWSER") },
 	{ MODKEY,                       XK_c,                     spawn,            SHCMD("workspacemenu") },
+	{ MODKEY,                       XK_e,                     spawn,            SHCMD("emoji") },
 	{ MODKEY,                       XK_p,                     spawn,            {.v = passmenucmd } },
 	{ MODKEY,                       XK_n,                     spawn,            {.v = redshiftoncmd } },
 	{ MODKEY|ShiftMask,             XK_n,                     spawn,            {.v = redshiftoffcmd } },
