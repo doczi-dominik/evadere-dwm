@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:size=12:weight=Bold:Italic", "JetBrainsMono Nerd Font Mono:size=18" };
+static const char *fonts[]          = { "JetBrainsMono NFM:size=12" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char background[]      = "#000000";
 static const char foreground[]      = "#FFFFFF";
@@ -38,6 +38,7 @@ static const char *const autostart[] = {
 	"picom", "-CGb", NULL,
 	"unclutter", NULL,
 	"gocaudices", NULL,
+	"lxpolkit", NULL,
 	NULL /* terminate */
 };
 
@@ -102,6 +103,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,                     spawn,            SHCMD("$BROWSER") },
 	{ MODKEY,                       XK_c,                     spawn,            SHCMD("workspacemenu") },
 	{ MODKEY,                       XK_e,                     spawn,            SHCMD("emoji") },
+	{ MODKEY,                       XK_s,                     spawn,            SHCMD("screenshot") },
 	{ MODKEY,                       XK_p,                     spawn,            {.v = passmenucmd } },
 	{ MODKEY,                       XK_n,                     spawn,            {.v = redshiftoncmd } },
 	{ MODKEY|ShiftMask,             XK_n,                     spawn,            {.v = redshiftoffcmd } },
