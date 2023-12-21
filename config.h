@@ -89,7 +89,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "rofi", "-modi", "drun", "-show", "drun", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "st", "-e", "fish", NULL };
 static const char *redshiftoncmd[] = { "redshift", "-O", "3000", NULL };
 static const char *redshiftoffcmd[] = { "redshift", "-x", NULL };
 static const char *passmenucmd[] = { "passmenu", NULL };
