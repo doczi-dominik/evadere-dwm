@@ -5,13 +5,13 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono NFM:size=12" };
+static const char *fonts[]          = { "JetBrainsMono:size=12", "JetBrainsMono NFM:size=14" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char background[]      = "#000000";
-static const char foreground[]      = "#FFFFFF";
-static const char sub[]             = "#646464";
-static const char accent[]          = "#FFC637";
-static const unsigned int baralpha = OPAQUE * 0.9;
+static const char foreground[]      = "#FEFFFA";
+static const char sub[]             = "#384B4B";
+static const char accent[]          = "#6DAF57";
+static const unsigned int baralpha = 0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -34,8 +34,8 @@ static const unsigned int alphas[][3] = {
 };
 
 static const char *const autostart[] = {
-	"wal", "-R", NULL,
-	"picom", "-CGb", NULL,
+	"setwallpaper", NULL,
+	"picom", "-b", NULL,
 	"unclutter", NULL,
 	"gocaudices", NULL,
 	"lxpolkit", NULL,
@@ -53,8 +53,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{  "pico8",   "pico8",    NULL,       0,            1,           -1 },
+	/* class    instance              title       tags mask     isfloating   monitor */
+	{  "pico8", "pico8",              NULL,       0,            1,           -1      },
+	{  NULL,    "Godot_Engine",       NULL,       0,            1,           -1      },
 };
 
 /* layout(s) */
