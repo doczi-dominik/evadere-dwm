@@ -8,10 +8,10 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono:size=12", "JetBrainsMono NFM:size=14" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char background[]      = "#000000";
-static const char foreground[]      = "#FEFFFA";
+static const char foreground[]      = "#F5FFFC";
 static const char sub[]             = "#384B4B";
-static const char accent[]          = "#6DAF57";
-static const unsigned int baralpha = 0;
+static const char accent[]          = "#12FFB0";
+static const unsigned int baralpha = 80;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -27,18 +27,20 @@ static const unsigned int alphas[][3] = {
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel] = { OPAQUE, baralpha, borderalpha },
 	[SchemeStatus] = { OPAQUE, baralpha, borderalpha },
-	[SchemeTagsSel] = { OPAQUE, 0, borderalpha },
-	[SchemeTagsNorm] = { OPAQUE, 0, borderalpha },
+	[SchemeTagsSel] = { OPAQUE, baralpha, borderalpha },
+	[SchemeTagsNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeInfoSel] = { OPAQUE, 0, borderalpha },
 	[SchemeInfoNorm] = { OPAQUE, 0, borderalpha },
 };
 
 static const char *const autostart[] = {
+	"setxkbmap", "hu", NULL,
 	"setwallpaper", NULL,
 	"picom", "-b", NULL,
 	"unclutter", NULL,
+	"/usr/lib/hyprpolkitagent", NULL,
+	"startpipewire", NULL,
 	"gocaudices", NULL,
-	"lxpolkit", NULL,
 	NULL /* terminate */
 };
 
@@ -103,7 +105,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return,                spawn,            {.v = termcmd } },
 	{ MODKEY,                       XK_w,                     spawn,            SHCMD("$BROWSER") },
 	{ MODKEY,                       XK_c,                     spawn,            SHCMD("workspacemenu") },
-	{ MODKEY,                       XK_e,                     spawn,            SHCMD("emoji") },
 	{ MODKEY,                       XK_s,                     spawn,            SHCMD("screenshot") },
 	{ MODKEY,                       XK_p,                     spawn,            {.v = passmenucmd } },
 	{ MODKEY,                       XK_n,                     spawn,            {.v = redshiftoncmd } },
